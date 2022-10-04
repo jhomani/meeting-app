@@ -1,0 +1,18 @@
+.clean-navbar {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+// .hide-scrollbar {
+//   @media  screen and (min-width: 768px) {
+//     overflow: hidden;
+//     width: calc(100% - 12px);
+//   }
+// }
+
+.fixed-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

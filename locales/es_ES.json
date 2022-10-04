@@ -1,0 +1,19 @@
+{
+  "english": "Ingles",
+  "spanish": "Español",
+  "navPrice": "Precios",
+  "navServices": "Servicios",
+  "cancel": "Cancelar",
+  "sure": "Seguro(a)",
+  "deleteForever": "¿Eliminar nota para siempre?",
+  "changeLocale": "Cambiar Ind",
+  "navContact": "Contactanos",
+  "navPortfolio": "Portafolio",
+  "handleTags": "Administrar Etiquetas",
+  "navAboutus": "Acerca de",
+  "landingTitle": "Bienvenido al despliegle en Vercel",
+  "landingCaption": "Realizamos",
+  "landingDinamicServOne": "Aplicaciones Moviles",
+  "landingDinamicServTwo": "Aplicaciones de Escritorio",
+  "landingDinamicServThree": "Aplicaciones en la Web"
+}

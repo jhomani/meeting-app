@@ -1,0 +1,31 @@
+image: jhomani/vercel-cd:03
+
+variables:
+  CONFIG_TARGET: './.vercel/project.json'
+
+before_script:
+  - echo "{\"orgId\":\"$VC_ACCOUNT_ID\",\"projectId\":\"$VC_PROJECT_ID\"}" > $CONFIG_TARGET
+  # - vercel env rm API_URI production --token $VERCEL_TOKEN -y || true
+  # - echo $API_URI | vercel env add API_URI production --token $VERCEL_TOKEN
+
+stages:
+  - development
+  - production
+
+Deploy to Development:
+  stage: development
+  variables:
+    LARGE_URI: 'frontend-swali.vercel.app'
+    SHORT_URI: 'swalisoft.vercel.app'
+  only:
+    - master
+  script:
+    - vercel deploy --token $VERCEL_TOKEN --cwd $(pwd)
+    - vercel alias $LARGE_URI $SHORT_URI --token $VERCEL_TOKEN
+
+Deploy to Production:
+  stage: production
+  only:
+    - tags
+  script:
+    - vercel --prod --token $VERCEL_TOKEN --cwd $(pwd)

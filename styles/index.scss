@@ -1,0 +1,94 @@
+@import './global/index.scss';
+@import './components/index.scss';
+@import './componets.scss';
+@import './landing/index.scss';
+
+html,
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--text-emphasis);
+  font-family: 'NoirPro', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.invisible {
+  visibility: hidden;
+}
+.hidden {
+  display: none !important;
+}
+.affix {
+  position: fixed;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+li,
+a,
+.options {
+  outline: 0;
+}
+
+html {
+  background-color: $bg-color;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+}
+
+:root {
+  --bg-color: #f0f0f0;
+  --bg-navbar: #fff;
+  --bg-modal: #f8f8f8;
+  --secondary: #e8e8e8;
+
+  --text-emphasis: #{$dark-emphasis};
+  --text-helper: #{$dark-helper};
+  --text-disabled: #{$dark-disabled};
+
+  --dynamic-hover: #{$dark-hover};
+  --dynamic-press: #{$dark-press};
+  --dynamic-selected: #{$dark-selected};
+}
+
+.dark-mode {
+  --bg-color: #18191a;
+  --bg-navbar: #242526;
+  --bg-modal: #1d1d1d;
+  --secondary: #3a3b3c;
+
+  --text-emphasis: #{$light-emphasis};
+  --text-helper: #{$light-helper};
+  --text-disabled: #{$light-disabled};
+
+  --dynamic-hover: #{$light-hover};
+  --dynamic-press: #{$light-press};
+  --dynamic-selected: #{$light-selected};
+}

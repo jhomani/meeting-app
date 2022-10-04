@@ -1,0 +1,19 @@
+{
+  "english": "English",
+  "spanish": "Spanish",
+  "navPrice": "Prices",
+  "cancel": "Cancel",
+  "sure": "I'm Sure",
+  "deleteForever": "Delete note forever?",
+  "navServices": "Services",
+  "changeLocale": "Change Lang",
+  "navContact": "Contact us",
+  "navPortfolio": "Porfolio",
+  "navAboutus": "About us",
+  "handleTags": "Handle Tags",
+  "landingTitle": "Welcome Vercel Deployment",
+  "landingCaption": "We Make",
+  "landingDinamicServOne": "Mobile Applications",
+  "landingDinamicServTwo": "Desktop Applications",
+  "landingDinamicServThree": "Web Applications"
+}

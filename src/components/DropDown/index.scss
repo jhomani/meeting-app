@@ -1,0 +1,131 @@
+.select-container {
+  &.primary {
+    .selected > button[role] {
+      color: $primary-emphasis;
+    }
+
+    .selected > button[role]:focus {
+      color: $primary-helper;
+    }
+  }
+}
+
+.drop-drown .options {
+  &.primary {
+    .selected::before {
+      background-color: $primary-selected;
+    }
+    .selected span {
+      color: $primary-emphasis;
+    }
+
+    li span {
+      color: $primary-helper;
+    }
+
+    li {
+      position: relative;
+      padding: 7.5px 7px;
+
+      &:hover::before {
+        background-color: $primary-hover;
+      }
+    }
+  }
+}
+
+.select-container {
+  display: inline-block;
+
+  &,
+  .selected {
+    position: relative;
+    min-width: 98px;
+    height: 26px;
+    border-radius: 10px;
+  }
+
+  .selected > button[role] {
+    @extend .sub-title;
+    position: absolute;
+    padding: 3px 7px;
+    border: 0;
+    text-align: start;
+    outline: 0;
+    cursor: pointer;
+    inset: 0 0 0 0;
+    background: transparent;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .selected .selectIcon {
+    position: absolute;
+    transition: transform 0.5s ease;
+    transform-origin: center;
+    transform: translateY(50%);
+    right: 6px;
+    bottom: 45%;
+  }
+
+  .selected > button[role]:focus {
+    color: var(--text-helper);
+  }
+
+  .selected > button[role]:focus + .selectIcon {
+    transform: translateY(50%) rotate(180deg);
+  }
+}
+
+.drop-drown .options {
+  @extend .txt-body2;
+  background-color: $bg-navbar;
+  border-radius: 9px;
+  animation: openOptions 0.5s;
+  overflow: hidden;
+  position: absolute;
+  box-shadow: $elavation5;
+  cursor: pointer;
+  z-index: 1;
+
+  .selected {
+    span {
+      color: var(--text-emphasis);
+    }
+
+    &::before {
+      background-color: var(--dynamic-selected);
+    }
+  }
+
+  li {
+    position: relative;
+    padding: 7.5px 7px;
+
+    span {
+      color: var(--text-helper);
+      position: relative;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: transparent;
+      inset: 0;
+    }
+
+    &:hover::before {
+      background-color: var(--dynamic-hover);
+    }
+    &:first-child {
+      padding-top: 8.5px;
+    }
+    &:last-child {
+      padding-bottom: 8.5px;
+    }
+  }
+
+  &.closeAnimation {
+    animation: closeOptions 0.5s;
+  }
+}

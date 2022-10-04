@@ -1,0 +1,25 @@
+.bottom-top-stack {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+
+  .undo-action {
+    position: relative;
+    animation: openMessageModal 0.3s;
+    margin-top: 10px;
+    background-color: var(--bg-modal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    border-radius: 12px;
+    max-width: 400px;
+    min-width: 310px;
+    column-gap: 20px;
+    box-shadow: $elavation5;
+  }
+
+  .clean-undo-action {
+    animation: cleanMessageModal 0.3s;
+  }
+}

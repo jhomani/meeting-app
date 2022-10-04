@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(#000, $alpha: 0.3);
+  z-index: 4;
+}
+
+.modal {
+  .modal-header {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-box {
+    background-color: var(--bg-modal);
+    min-width: 340px;
+    min-height: 115px;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &.center {
+      bottom: 50%;
+    }
+    &.top {
+      top: 50px;
+    }
+
+  }
+}
+
+.closerTopRight {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.hide-scrollbar {
+  @media screen and (min-width: 768px) {
+    overflow: hidden;
+    // width: calc(100% - 12px);
+  }
+}

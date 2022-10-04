@@ -1,0 +1,68 @@
+// main colors
+.primary-emphasis {
+  color: $primary-emphasis;
+  fill: $primary-emphasis;
+}
+.primary-helper {
+  color: $primary-helper;
+  fill: $primary-helper;
+}
+.primary-disabled {
+  color: $primary-disabled;
+  fill: $primary-disabled;
+}
+
+.txt-emphasis {
+  color: var(--text-emphasis);
+  fill: var(--text-emphasis);
+}
+.txt-helper {
+  color: var(--text-helper);
+  fill: var(--text-helper);
+}
+.txt-disabled {
+  color: var(--text-disabled);
+  fill: var(--text-disabled);
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+.bg-color {
+  background-color: $bg-color;
+}
+.bg-navbar {
+  background-color: $bg-navbar;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+// status colors
+.primary-selected-btn > span {
+  color: $primary-emphasis !important;
+}
+.primary-selected-btn::before {
+  background-color: $primary-selected !important;
+}
+
+.primary-selected {
+  color: $primary-text-selected !important;
+}
+.primary-hover {
+  color: $primary-hover;
+}
+
+// boxshabw
+.elevation-5 {
+  box-shadow: $elavation5;
+}
+.elevation-8 {
+  box-shadow: $elavation8;
+}
+.elevation-10 {
+  box-shadow: $elavation10;
+}
+.elevation-15 {
+  box-shadow: $elavation15;
+}

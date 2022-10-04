@@ -1,0 +1,65 @@
+@use 'sass:color';
+
+// LIGHT MODE
+$light-hover: rgba(#fff, 0.04);
+$light-press: rgba(#fff, 0.08);
+$light-selected: rgba(#fff, 0.08);
+
+$light-emphasis: rgba(#fff, 0.87);
+$light-helper: rgba(#fff, 0.6);
+$light-disabled: rgba(#fff, 0.38);
+
+// DARK MODE
+$dark-hover: rgba(#000, 0.04);
+$dark-press: rgba(#000, 0.08);
+$dark-selected: rgba(#000, 0.08);
+
+$dark-emphasis: rgba(#000, 0.87);
+$dark-helper: rgba(#000, 0.6);
+$dark-disabled: rgba(#000, 0.38);
+
+// PRIMARY MODE
+$primary: #399efc;
+$primary-variant: #0f85f2;
+$primary-hover: rgba($primary, 0.04);
+$primary-press: rgba($primary, 0.08);
+$primary-selected: rgba($primary, 0.1);
+
+$primary-emphasis: rgba($primary-variant, 0.87);
+$primary-helper: rgba($primary-variant, 0.6);
+$primary-disabled: rgba($primary-variant, 0.38);
+
+$secondary: var(--secondary);
+// STATES
+$link-color: #1890ff;
+$success-color: #43ff8e;
+$warning-color: #ffd465;
+$error-color: #ff4a4a;
+
+// Error Effects
+$error-hover: rgba($error-color, 0.04);
+$error-press: rgba($error-color, 0.08);
+
+//text-styles
+$font-family: 'noir-pro';
+
+$text-helper: var(--text-helper);
+$text-disabled: var(--text-disabled);
+
+$bg-color: var(--bg-color);
+$bg-navbar: var(--bg-navbar);
+
+$elavation5: 3px 3px 20px -1px rgba(0, 0, 0, 0.1);
+$elavation8: 0px 0px 25px 5px rgba(#000, 0.15);
+$elavation10: 0px 0px 20px 5px rgba(66, 66, 66, 0.2);
+$elavation15: 5px 5px 20px 3px rgba(0, 0, 0, 0.1),
+  -1px -1px 20px rgba(66, 66, 66, 0.25);
+
+// status of accions
+// $dynamic-hover: var(--dynamic-hover);
+// $dynamic-press: var(--dynamic-press);
+
+$primary-text-selected: rgba($primary, 0.87);
+
+// lengths
+$btn-height: 24px;

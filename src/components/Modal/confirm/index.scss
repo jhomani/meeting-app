@@ -1,0 +1,28 @@
+.confirm {
+  .modal-box {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 25px 15px;
+
+    .confirm-message {
+      flex-grow: 2;
+      max-width: 420px;
+      min-width: 350px;
+      display: flex;
+      column-gap: 8px;
+      align-items: flex-start;
+
+      & > *:first-child {
+        align-self: center;
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      column-gap: 10px;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.custom-scrollbar {
+  position: relative;
+  border-radius: inherit;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollbar-pointer {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #555;
+
+  &:hover {
+    background-color: #666;
+    cursor: default;
+  }
+}

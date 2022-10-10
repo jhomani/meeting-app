@@ -25,7 +25,7 @@ const initialState = {
 
 const Navbar = ({items}: NavbarIn) => {
   const [state, setState] = useStatus(initialState);
-  const navBar = useRef(null);
+  const navBar = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const currentNav = useMemo(() => {
@@ -55,7 +55,7 @@ const Navbar = ({items}: NavbarIn) => {
     if (window?.innerWidth) setState({screenWidth: window.innerWidth});
 
     if (navBar.current) {
-      const items = navBar.current.querySelectorAll('a.nav-item');
+      const items = navBar.current.querySelectorAll<HTMLLinkElement>('a.nav-item');
 
       for (const i of items) {
         const itemRef = i.getAttribute('href');
@@ -63,10 +63,10 @@ const Navbar = ({items}: NavbarIn) => {
         if (itemRef === router.pathname) i.classList.add('primary-selected');
 
         i.onclick = (e) => {
-          const target: HTMLElement = e.target;
+          const target = e.target as HTMLElement;
 
           items.forEach((j) => j.classList.remove('primary-selected'));
-          target.classList.add('primary-selected');
+          target?.classList.add('primary-selected');
         };
       }
     }
@@ -91,9 +91,13 @@ const Navbar = ({items}: NavbarIn) => {
           <ul className="navbar-left">
             <li>
               <Link href="/">
-                <a href="/" className="nav-item">
+                <img
+                  height={100}
+                  width={100}
+                  src="https://app.clickup.com/assets/images/brand/clickup_color-new.svg" alt="logo" />
+                {/* <a href="/" className="nav-item">
                   <b>Tagger</b>&nbsp;Exercise
-                </a>
+                </a> */}
               </Link>
             </li>
           </ul>

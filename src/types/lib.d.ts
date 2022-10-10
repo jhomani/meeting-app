@@ -4,6 +4,19 @@ declare type num = number;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare type Any = any;
 
+declare interface InTags {
+  tags: Array<{key: number; label: string}>;
+  banner: {
+    id?: number,
+    tags?: Array<{id: number; label: string}>;
+    createdAt?: number,
+    updatedAt?: number,
+    title?: string,
+    imageUrl?: string,
+    thumbnailUrl?: string,
+  }
+}
+
 declare interface InAppState {
   navCollapsed: boolean;
   pathname: string;
@@ -40,6 +53,6 @@ declare module '*.png' {
 }
 
 declare interface PromiseAcc {
-  res: (value: unknown) => void;
-  rej: (value: unknown) => void;
+  resolve: (value: unknown) => void;
+  reject: (value: unknown) => void;
 }

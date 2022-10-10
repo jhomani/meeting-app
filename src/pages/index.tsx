@@ -1,73 +1,40 @@
-import React, {memo} from 'react';
-
-import {Button, DropDown, Language} from '@components/index';
-import {login} from '@redux/actions/auth';
+import TaggerContainer from 'src/containers/Landing/Tagger';
+import {getCurrentBanner} from 'src/redux/tags/actions';
+import React, {
+  memo, useEffect, useState
+} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {getStatisticsStart} from '@admin/Statictic/redux/actions';
-
-const options = [
-  {
-    key: 0,
-    label: 'Carlos',
-  },
-  {
-    key: 1,
-    label: 'Juan',
-  },
-  {
-    key: 2,
-    label: 'Antonio',
-  },
-  {
-    key: 3,
-    label: 'Mamani',
-  },
-];
-
 const IndexPage = () => {
+  let resp;
   const dispatch = useDispatch();
-  console.log('refesh this component');
+  const [loading, setLoading] = useState(false);
 
-  const handleSelected = (selected: number) => {
-    console.log(selected, 'in used');
+  useEffect(() => {
+    getInitialData();
+  }, []);
+
+  const getInitialData = async () => {
+    try {
+      setLoading(true);
+
+      await new Promise((resolve, reject) =>
+        dispatch(getCurrentBanner({
+          resolve,
+          reject
+        }))
+      );
+    } catch (e) {
+      console.log(e);
+    }
+
+    setLoading(false);
   };
 
-  return (
-    <>
-      <div className="landing">
-        <h2 className="landing-title g-my-4">
-          <Language langKey="landingTitle" />
-        </h2>
+  if (loading) resp = <p className='txt-center'>Cargando banner...</p>;
+  else resp = <TaggerContainer />;
 
-        <DropDown options={options} initial={0} onSelected={handleSelected} />
-
-        <DropDown
-          type="primary"
-          options={options}
-          initial={0}
-          onSelected={handleSelected}
-        />
-
-        <Button
-          type="primary"
-          content="Login Production"
-          onPress={() => {
-            dispatch(login({user: '9999999'}));
-          }}
-        />
-
-        <Button
-          onPress={() => {
-            dispatch(getStatisticsStart({datas: ['11111111', '0000000']}));
-          }}
-          type="primary"
-          className="mt-2"
-          content="get staticitis"
-        />
-      </div>
-    </>
-  );
+  return resp;
 };
 
 export default memo(IndexPage);

@@ -1,4 +1,4 @@
-declare type ShortHandEqualType = string | number | boolean | Date;
+declare type ShortHandEqualType = string | number | boolean | Date | Function;
 
 declare type AnyObject = Record<string, ShortHandEqualType>;
 

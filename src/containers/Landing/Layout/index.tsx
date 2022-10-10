@@ -32,15 +32,6 @@ const LandingLayout = ({children}: InLandingLayout) => {
 
   const items = [
     {
-      label: (
-        <DropDown
-          options={options}
-          initial={locale}
-          onSelected={handleSelected}
-        />
-      ),
-    },
-    {
       path: '/handle-tags',
       label: 'Contact me',
     },
@@ -60,23 +51,13 @@ const LandingLayout = ({children}: InLandingLayout) => {
       path: '/components/modal',
       label: 'Modals',
     },
-    {
-      label: (
-        <Button
-          type="secondary"
-          onPress={toggleColorMode}
-          icon={<LightMode size="20" />}
-          shape="round"
-        />
-      ),
-    },
   ];
 
   return (
     <>
       <Navbar items={items} />
       {children}
-      <h6 className="txt-center g-my-3"> this is footer </h6>
+      {/* <h6 className="txt-center g-my-3"> this is footer </h6> */}
     </>
   );
 };

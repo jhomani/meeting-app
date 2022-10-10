@@ -10,12 +10,12 @@ export const IndexPage = ({Component, pageProps}) => {
 
   useEffect(() => {
     const locale = getNavigatorLocale();
-    const mode = setDefaultColorMode();
+    // const mode = setDefaultColorMode();
 
     dispatch(
       setDefaultValues({
         locale,
-        mode,
+        // mode,
       })
     );
   }, []);

@@ -30,7 +30,7 @@ export default class MainService {
     return request(url, options);
   }
 
-  public updateById(endpoint: string, id: string, body = {}) {
+  public updateById(endpoint: string, id: num, body = {}) {
     const options = patchOptions(body);
     const url = `${process.env.BACK_URL}/${endpoint}/${id}`;
 

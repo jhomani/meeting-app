@@ -1,3 +1,6 @@
+// url('./cenia_form.css');
+@import './cenia_form.scss';
+
 .landing {
   height: calc(100vh - 80px);
   transition: background-color .2s ease-in-out;
@@ -27,7 +30,7 @@ html {
   .form input {
     border: 1px solid #d6d9de;
     outline: 0;
-    background-color: transparent;
+    background-color: pink;
     height: 40px;
     border-radius: 20px;
     padding: 10px 15px;

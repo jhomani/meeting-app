@@ -11,28 +11,27 @@ export default class MainService {
     const options = getOptions();
     const encodeFilter = encodeURI(JSON.stringify(filter));
 
-    const url = `${process.env.BACK_URL}/${endpoint}?filter=${encodeFilter}`;
+    const url = `${endpoint}?filter=${encodeFilter}`;
 
     return request(url, options);
   }
 
   public postMethod(endpoint: string, body = {}) {
     const options = postOptions(body);
-    const url = `${process.env.BACK_URL}/${endpoint}`;
 
-    return request(url, options);
+    return request(endpoint, options);
   }
 
   public deleteById(endpoint: string, body = {}) {
     const options = deleteOptions(body);
-    const url = `${process.env.BACK_URL}/${endpoint}`;
+    const url = `${endpoint}`;
 
     return request(url, options);
   }
 
   public updateById(endpoint: string, id: num, body = {}) {
     const options = patchOptions(body);
-    const url = `${process.env.BACK_URL}/${endpoint}/${id}`;
+    const url = `${endpoint}/${id}`;
 
     return request(url, options);
   }

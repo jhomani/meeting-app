@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 
 const IndexPage = () => {
 
-  return <DessertContainer />;
+  return <h2>Pagina Initio</h2>;
 };
 
 export default memo(IndexPage);

@@ -31,5 +31,6 @@
   "typescript.preferences.quoteStyle": "single",
   "eslint.run": "onSave",
   "eslint.nodePath": "./node_modules",
-  "eslint.validate": ["javascript", "typescript"]
+  "eslint.validate": ["javascript", "typescript"],
+  "liveServer.settings.port": 5501
 }

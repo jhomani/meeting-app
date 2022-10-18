@@ -1,12 +1,39 @@
-import DessertContainer from 'src/containers/Landing/CeniaDessertForm';
-import React, {
-  memo, useEffect, useState
-} from 'react';
-import {useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+import io from 'socket.io-client';
+let socket: any;
 
-const IndexPage = () => {
+const Home = () => {
+  const [input, setInput] = useState('');
 
-  return <h2>Pagina Initio</h2>;
+  useEffect(() => {
+    socketInitializer();
+  }, []);
+
+  const socketInitializer = async () => {
+    await fetch('/api/socker-handler');
+
+    socket = io();
+
+    socket.on('connect', () => {
+      console.log('connected from FRONT....');
+    });
+  };
+
+  const onChangeHandler = (e: any) => {
+    setInput(e.target.value);
+    socket.emit('input-change', e.target.value);
+  };
+
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="Type something"
+        value={input}
+        onChange={onChangeHandler}
+      />
+    </>
+  );
 };
 
-export default memo(IndexPage);
+export default Home;

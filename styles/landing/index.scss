@@ -16,9 +16,10 @@
 }
 
 html {
-  background-image: url('https://app-cdn.clickup.com/login-bg.5ff304517621ee7b0287.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-image: url('https://app-cdn.clickup.com/login-bg.5ff304517621ee7b0287.svg');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  background-color: $bg-color;
   min-height: 100vh;
   position: relative;
 }

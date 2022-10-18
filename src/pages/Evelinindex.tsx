@@ -1,8 +1,6 @@
 import React from 'react';
 import {Formik, Form, Field} from 'formik';
 
-import './Evelinstyles.css';
-
 interface FormValues {
   nombre_receta: string;
   detalle_receta: string;

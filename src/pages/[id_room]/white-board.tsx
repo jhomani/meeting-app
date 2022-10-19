@@ -1,7 +1,6 @@
-import React, {useState, MouseEvent, useRef, useEffect} from 'react';
+import React, {MouseEvent, useRef, useEffect} from 'react';
 import {Button} from '@components/index';
 import {useStatus} from '@src/utils/custom-hook';
-import {stat} from 'fs';
 
 interface IInitalState {
   pressedMouse: bool;
@@ -28,7 +27,7 @@ interface IStrokes {
 
 let strokes: IStrokes[] = [];
 
-const DessertFormContainer = () => {
+const WhiteBoardPage = () => {
   const [state, setState] = useStatus<IInitalState>(initialValues);
   const canvas = useRef<HTMLCanvasElement>(null);
 
@@ -165,5 +164,5 @@ const DessertFormContainer = () => {
   );
 };
 
-export default DessertFormContainer;
+export default WhiteBoardPage;
 

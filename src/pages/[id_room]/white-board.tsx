@@ -1,6 +1,10 @@
 import React, {MouseEvent, useRef, useEffect} from 'react';
 import {Button} from '@components/index';
 import {useStatus} from '@src/utils/custom-hook';
+import { useRouter } from 'next/router'
+import io from 'socket.io-client';
+
+let socket: any;
 
 interface IInitalState {
   pressedMouse: bool;
@@ -30,6 +34,8 @@ let strokes: IStrokes[] = [];
 const WhiteBoardPage = () => {
   const [state, setState] = useStatus<IInitalState>(initialValues);
   const canvas = useRef<HTMLCanvasElement>(null);
+  const router = useRouter()
+  const { id_room } = router.query
 
   let axisX = 0, axisY = 0, pressedMouse = false;
 
@@ -69,16 +75,26 @@ const WhiteBoardPage = () => {
   }
 
   useEffect(() => {
-    const square = canvas.current as HTMLCanvasElement;
-    const paper = square.getContext("2d")!;
-    paper.lineCap = 'round';
+    socketInitializer();
 
+    const square = canvas.current as HTMLCanvasElement;
+    const paper = square.getContext("2d")!; paper.lineCap = 'round';
     setState({paper});
+
+    socket = io();
+
+    socket.on(`${id_room}@draw`, (points: string) => {
+      strokes = JSON.parse(points);
+      redraw(paper);
+    })
   }, [])
 
   const stopDrawing = () => {
     setState({pressedMouse: false});
+
     pressedMouse = false;
+
+    socket.emit(`${id_room}@change`, JSON.stringify(strokes));
   }
 
   const drawingLine = (xEnd: num, yEnd: num) => {
@@ -102,37 +118,47 @@ const WhiteBoardPage = () => {
   const handleRestore = () => {
     if(localStorage.getItem('canvas_strokes')) {
       strokes = JSON.parse(localStorage.getItem('canvas_strokes')!);
-      redraw();
+      redraw(state.paper);
     }
   }
 
-  const redraw = () => {
-    state.paper.clearRect(0, 0, canvas.current!.width, canvas.current!.height);
+  const redraw = (paper: CanvasRenderingContext2D) => {
+    paper.clearRect(0, 0, canvas.current!.width, canvas.current!.height);
 
-    state.paper.lineCap = 'round';
+    paper.lineCap = 'round';
 
     for (var i = 0; i < strokes.length; i++) {
       var s =strokes[i];
-      state.paper.strokeStyle = s.color;
-      state.paper.lineWidth = s.size;
-      state.paper.beginPath();
-      state.paper.moveTo(s.points[0].x, s.points[0].y);
+      paper.strokeStyle = s.color;
+      paper.lineWidth = s.size;
+      paper.beginPath();
+      paper.moveTo(s.points[0].x, s.points[0].y);
 
       for (var j = 0; j < s.points.length; j++){
         var p = s.points[j];
-        state.paper.lineTo(p.x, p.y);
+        paper.lineTo(p.x, p.y);
       }
 
-      state.paper.stroke();
+      paper.stroke();
     }
-}
+  }
+
+  const socketInitializer = async () => {
+    await fetch('/api/socker-handler');
+
+    socket = io();
+
+    socket.on('connect', () => {
+      console.log('connected from FRONT....');
+    });
+  };
 
   return (
     <div className='whiteboard'>
       <div className='button-group'>
-        <Button onPress={handleSave}>
+        {/* <Button onPress={handleSave}>
           Save
-        </Button>
+        </Button> */}
         <Button onPress={handleClear}>
           Clear
         </Button>

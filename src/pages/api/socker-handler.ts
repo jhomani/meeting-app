@@ -11,12 +11,8 @@ const SocketHandler = (req: any, res: any) => {
     res.socket.server.io = io;
 
     io.on('connection', (socket) => {
-      console.log('New Connection', socket.id);
-
-      socket.on('input-change', (msg) => {
-        console.log('FROM CLIENT >>>', msg);
-
-        socket.broadcast.emit('update-input', msg);
+      socket.on('xxx-yyy-zzz@change', (msg) => {
+        socket.broadcast.emit('xxx-yyy-zzz@draw', msg);
       });
     });
   }

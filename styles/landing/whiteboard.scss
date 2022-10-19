@@ -1,2 +1,72 @@
 .whiteboard {
+  text-align: center;
+  margin: 50px 20px ;
+
+  canvas {
+    border-radius: 20px;
+  }
+
+  .button-group {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  .canvas-continer {
+    position: relative;
+    width: fit-content;
+    margin: 10px auto;
+  }
+
+  .color-buttons {
+    position: absolute;
+    margin: 10px auto;
+    top: 3px;
+    right: 3px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+
+    .red {
+      background-color: red;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .black {
+      background-color: black;
+    }
+    .green {
+      background-color: #0f0;
+    }
+
+    .btn-primary  {
+      height: 36px;
+    }
+  }
+}
+
+.create-room {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  align-items: center;
+
+  h6 {
+    background: #0003;
+    padding: 15px 20px;
+    border-radius: 15px;
+    width: 250px;
+    text-align: center;
+  }
+
+  a {
+    width: 250px;
+  }
 }

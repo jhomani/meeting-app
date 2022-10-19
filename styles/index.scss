@@ -10,7 +10,7 @@ html,
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--text-emphasis);
+  color: #fff;
   font-family: 'NoirPro', sans-serif;
 }
 
@@ -58,7 +58,7 @@ a,
 }
 
 html {
-  background-color: $bg-color;
+  // background-color: $bg-color;
   -webkit-tap-highlight-color: transparent;
   font-size: 16px;
 }

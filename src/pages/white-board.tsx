@@ -1,15 +1,18 @@
 import React, {useState, MouseEvent, useRef, useEffect} from 'react';
 import {Button} from '@components/index';
 import {useStatus} from '@src/utils/custom-hook';
+import {stat} from 'fs';
 
 interface IInitalState {
   pressedMouse: bool;
   paper: CanvasRenderingContext2D;
+  color: string;
 }
 
 const initialValues = {
   pressedMouse: false,
   paper: {} as CanvasRenderingContext2D,
+  color: '#000',
 }
 
 interface IPoint {
@@ -36,12 +39,13 @@ const DessertFormContainer = () => {
     pressedMouse = true;
 
     const target = event.target as HTMLCanvasElement;
+    const rects = target.getClientRects()[0];
 
-    axisX = event.pageX - target.offsetLeft;
-    axisY = event.pageY - target.offsetTop;
+    axisX = event.pageX - rects.left;
+    axisY = event.pageY - rects.top;
 
     strokes.push({
-      color: '#0f0',
+      color: state.color,
       size: 2,
       points: [{x: axisX, y: axisY}],
     });
@@ -50,9 +54,10 @@ const DessertFormContainer = () => {
   const drawLine = (event: MouseEvent) => {
     if (pressedMouse) {
       const target = event.target as HTMLCanvasElement;
+      const rects = target.getClientRects()[0];
 
-      const x = event.pageX - target.offsetLeft;
-      const y  = event.pageY - target.offsetTop;
+      const x = event.pageX - rects.left;
+      const y  = event.pageY - rects.top;
 
       drawingLine(x, y);
 
@@ -79,7 +84,7 @@ const DessertFormContainer = () => {
 
   const drawingLine = (xEnd: num, yEnd: num) => {
     state.paper.beginPath();
-    state.paper.strokeStyle = '#000';
+    state.paper.strokeStyle = state.color;
     state.paper.lineWidth = 2;
     state.paper.moveTo(axisX, axisY);
     state.paper.lineTo(xEnd,yEnd);
@@ -124,27 +129,39 @@ const DessertFormContainer = () => {
 }
 
   return (
-    <>
-      <Button onPress={handleSave}>
-        Save
-      </Button>
-      <Button onPress={handleClear}>
-        Clear
-      </Button>
-      <Button onPress={handleRestore}>
-        Restore
-      </Button>
-      <canvas
-        width="500"
-        height="500"
-        id="drawPlace"
-        ref={canvas}
-        onMouseDown={startDrawing}
-        onMouseUp={stopDrawing}
-        onMouseMove={drawLine}
-        style={{border:'1px solid #eee', backgroundColor: '#fff', cursor: 'crosshair'}}
-      ></canvas>
-    </>
+    <div className='whiteboard'>
+      <div className='button-group'>
+        <Button onPress={handleSave}>
+          Save
+        </Button>
+        <Button onPress={handleClear}>
+          Clear
+        </Button>
+        <Button onPress={handleRestore}>
+          Restore
+        </Button>
+      </div>
+
+      <div className='canvas-continer'>
+        <div className='color-buttons'>
+          <Button className='red' onPress={() => setState({color:'#f00'})} />
+          <Button className='blue' onPress={() => setState({color:'#00f'})} />
+          <Button className='black' onPress={() => setState({color:'#000'})} />
+          <Button className='green' onPress={() => setState({color:'#0f0'})} />
+        </div>
+        <canvas
+          width="700"
+          height="700"
+          id="drawPlace"
+          ref={canvas}
+          onMouseDown={startDrawing}
+          onMouseUp={stopDrawing}
+          onMouseMove={drawLine}
+          style={{border:'1px solid #eee', backgroundColor: '#fff', cursor: 'crosshair'}}
+        ></canvas>
+
+      </div>
+    </div>
   );
 };
 

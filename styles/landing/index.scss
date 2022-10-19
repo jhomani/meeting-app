@@ -5,6 +5,8 @@
 @import './genkisty.scss';
 @import './Evelin_St.scss';
 
+@import './whiteboard.scss';
+
 .landing {
   height: calc(100vh - 80px);
   transition: background-color 0.2s ease-in-out;
@@ -19,7 +21,8 @@ html {
   // background-image: url('https://app-cdn.clickup.com/login-bg.5ff304517621ee7b0287.svg');
   // background-size: cover;
   // background-repeat: no-repeat;
-  background-color: $bg-color;
+  background-color: #18191a;
   min-height: 100vh;
+  width: 100%;
   position: relative;
 }

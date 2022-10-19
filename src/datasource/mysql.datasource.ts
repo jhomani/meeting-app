@@ -43,22 +43,12 @@ export class MySQL {
     });
   }
 
-  public async singleQuery(query: string, values?: unknown[]) {
-    const client = await this.getConnection();
-    const result = await this.asyncQuery( client, query, values);
-
-    client.release();
-
-    return result;
-  }
-
   public async connect() {
     if(!this.connection)
       this.connection = await this.getConnection();
   }
 
   public release() {
-    // this.connection?.release();
     this.connection?.destroy();
     this.connection = undefined;
   }

@@ -21,9 +21,9 @@ export const IndexPage = ({Component, pageProps}) => {
   }, []);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    // <Layout>
+    <Component {...pageProps} />
+    // </Layout>
   );
 };
 

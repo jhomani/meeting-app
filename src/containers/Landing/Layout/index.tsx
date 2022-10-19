@@ -32,8 +32,8 @@ const LandingLayout = ({children}: InLandingLayout) => {
 
   const items = [
     {
-      path: '/handle-tags',
-      label: 'Contact me',
+      path: '/jcarlos-form',
+      label: 'J Carlos Form',
     },
     {
       path: '/components/notification',

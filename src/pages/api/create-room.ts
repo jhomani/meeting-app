@@ -10,8 +10,8 @@ export default async function createRoom(
 
   if(req.method === 'POST') {
     const {roomName} = req.body;
-    const roomCode = `${randomChars(4)}-${randomChars(4)}-${randomChars(4)}`;
-
+    //const roomCode = `${randomChars(4)}-${randomChars(4)}-${randomChars(4)}`;
+    const roomCode = 'xxx-yyy-zzz';
     await sql.query(`
       INSERT INTO SalaReunion(idAdministrador, nomSala, enlace)
       VALUES(1, '${roomName}', '${roomCode}')

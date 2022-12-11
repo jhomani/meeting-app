@@ -107,19 +107,9 @@ const WhiteBoardPage = () => {
     state.paper.closePath();
   }
 
-  const handleSave = () => {
-    localStorage.setItem('canvas_strokes', JSON.stringify(strokes));
-  }
-
   const handleClear = () => {
     state.paper.clearRect(0, 0, canvas.current!.width, canvas.current!.height);
-  }
-
-  const handleRestore = () => {
-    if(localStorage.getItem('canvas_strokes')) {
-      strokes = JSON.parse(localStorage.getItem('canvas_strokes')!);
-      redraw(state.paper);
-    }
+    socket.emit(`${id_room}@change`, '[]');
   }
 
   const redraw = (paper: CanvasRenderingContext2D) => {
@@ -156,14 +146,8 @@ const WhiteBoardPage = () => {
   return (
     <div className='whiteboard'>
       <div className='button-group'>
-        {/* <Button onPress={handleSave}>
-          Save
-        </Button> */}
         <Button onPress={handleClear}>
           Clear
-        </Button>
-        <Button onPress={handleRestore}>
-          Restore
         </Button>
       </div>
 
